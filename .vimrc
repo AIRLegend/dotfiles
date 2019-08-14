@@ -16,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
-"Plugin 'chriskempson/base16-vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
@@ -28,7 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript' "JS ES6 syntax (node)
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
-
+"
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -213,7 +212,8 @@ let g:UltiSnipsEditSplit="vertical"
 " ================= YCM config ================
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
+let g:ycm_python_binary_path = '/usr/local/bin/python3.7'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3.7'
 " ================ Aux. Functions ================
 function! ToggleSpellCheck()
     set spell!
