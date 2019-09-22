@@ -24,9 +24,10 @@ Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-Plugin 'pangloss/vim-javascript' "JS ES6 syntax (node)
+Plugin 'pangloss/vim-javascript' 
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
+Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -120,7 +121,8 @@ set wildmenu                    "All matching files when tab complete (:find fil
 set path+=**                    "Autocompletado para ficheros en el dir
 
 set showmode                    " always show what mode we're currently editing in
-set nowrap                      " don't wrap lines
+set wrap                        " don't wrap lines
+set linebreak                   " Word wrap level (not character)
 set tabstop=4                   " a tab is four spaces
 set smarttab
 
@@ -214,6 +216,10 @@ let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_python_binary_path = '/usr/local/bin/python3.7'
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3.7'
+" ================= Pymode config ================
+" Rope support
+call pymode#default('g:pymode_rope', 1)
+let g:pymode_rope_goto_definition_bind='<leader>g'
 " ================ Aux. Functions ================
 function! ToggleSpellCheck()
     set spell!
