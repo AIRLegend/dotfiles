@@ -97,7 +97,8 @@ export EDITOR='vim'
 
 
 #Vim
-alias vim='/usr/local/bin/vim'
+alias vim='/usr/local/Cellar/vim/8.1.2100/bin/vim'
+
 # Tmux
 alias tmuxa='tmux a -t'
 alias tmuxs='tmux new -s'

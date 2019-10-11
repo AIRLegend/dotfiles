@@ -225,7 +225,7 @@ function! ToggleSpellCheck()
     set spell!
     syntax spell toplevel
     if &spell
-        :setlocal spell spelllang=es_es
+        :setlocal spell spelllang=es
         echo "Spellcheck ON"
     else
         echo "Spellcheck OFF"
