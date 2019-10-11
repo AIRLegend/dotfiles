@@ -17,8 +17,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
@@ -58,24 +58,25 @@ set background=dark
 set termguicolors
 "Color scheme
 ":colorscheme moody
+colorscheme lucid
 
 " COLORSCHEME onedark -----------------
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
-colorscheme onedark
+"let g:onedark_termcolors=256
+"let g:onedark_terminal_italics=1
+"colorscheme onedark
 "Override onedark settings
-hi Folded guifg=#87afaf guibg=#4b5263 guisp=#080808 gui=NONE ctermfg=109 ctermbg=232 cterm=NONE
+"hi Folded guifg=#87afaf guibg=#4b5263 guisp=#080808 gui=NONE ctermfg=109 ctermbg=232 cterm=NONE
 " -------------------------------------
 
-:set laststatus=2               "Always shows status line
-set statusline+=%F
-
+set laststatus=2               "Always shows status line
+set statusline=%F\ %m\ %=\ %y\ %l/%L:%c 
 "highlight LineNr guibg=#181b1e  "highlight line numbers
+"
 " =========================== Airline bar ======================
-let g:airline_theme='molokai'
+"let g:airline_theme='molokai'
 "let g:airline_theme='lucius'
 
- set noshowmode "Remove status mode text
+ "set noshowmode "Remove status mode text
 "let g:airline_powerline_fonts = 1   "Activate the triangles as separators
 "if !exists('g:airline_symbols')
 "    let g:airline_symbols = {}
@@ -107,9 +108,9 @@ let g:airline_theme='molokai'
 "let g:Powerline_symbols='unicode'
 
 
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#whitespace#enabled = 0 "Do not show `trailing space` warning
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#whitespace#enabled = 0 "Do not show `trailing space` warning
 
 set encoding=utf-8
 
@@ -144,6 +145,7 @@ set showmode                    "Show current mode down the bottom
 set title
 set ruler
 set hlsearch
+
 
 "Folding config
 let g:SimpylFold_docstring_preview=1
@@ -214,7 +216,7 @@ let g:UltiSnipsEditSplit="vertical"
 " ================= YCM config ================
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_python_binary_path = '/usr/bin/'
+let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " ================= Pymode config ================
