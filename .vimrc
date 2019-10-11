@@ -214,8 +214,9 @@ let g:UltiSnipsEditSplit="vertical"
 " ================= YCM config ================
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_python_binary_path = '/usr/local/bin/python3.7'
-let g:ycm_server_python_interpreter = '/usr/local/bin/python3.7'
+let g:ycm_python_binary_path = '/usr/bin/'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " ================= Pymode config ================
 " Rope support
 call pymode#default('g:pymode_rope', 1)
