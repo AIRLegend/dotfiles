@@ -118,6 +118,7 @@ endif
 let colorgroup['WarningMsg']   = {"GUIFG": _rock_dark, "GUIBG":  _steel, "CTERM":"bold"}
 let colorgroup['TabLine']   = {"GUIFG": _gray,      "GUIBG":  _rock}
 let colorgroup['TabLineFill'] = {"GUIFG": _gray_dark, "GUIBG":  _rock}
+let colorgroup['SpellBad'] = {    "GUIBG":  _pink}
 
 " Syntax
 " ----------------------------------------------------------------------
@@ -141,7 +142,7 @@ let colorgroup['StorageClass'] = {"GUIFG": _cloud,     "GUI": "bold"}
 let colorgroup['Structure']    = {"GUIFG": _gray_medium}
 let colorgroup['Symbol']       = {"GUIFG": _sky}
 let colorgroup['Type']         = {"GUIFG": _steel}
-let colorgroup['Underlined']   = {"GUIFG": _turquoise, "GUI": "underline"}
+let colorgroup['Underlined']   = {"GUIFG": _turquoise, "GUIBG":_gray_dark, "GUI": "underline"}
 let colorgroup['Userdef']      = {"GUIFG": _sap}
 " ------------------------
 hi link Boolean               Number
