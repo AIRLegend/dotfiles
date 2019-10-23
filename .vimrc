@@ -60,6 +60,7 @@ set termguicolors
 ":colorscheme moody
 colorscheme lucid
 
+set completeopt=menu,preview,noinsert
 " COLORSCHEME onedark -----------------
 "let g:onedark_termcolors=256
 "let g:onedark_terminal_italics=1
@@ -70,6 +71,7 @@ colorscheme lucid
 
 set laststatus=2               "Always shows status line
 set statusline=%F\ %m\ %=\ %y\ %l/%L:%c 
+set shortmessage-=S  "Show search match numbers 
 "highlight LineNr guibg=#181b1e  "highlight line numbers
 "
 " =========================== Airline bar ======================
