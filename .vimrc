@@ -71,7 +71,7 @@ set completeopt=menu,preview,noinsert
 
 set laststatus=2               "Always shows status line
 set statusline=%F\ %m\ %=\ %y\ %l/%L:%c 
-set shortmessage-=S  "Show search match numbers 
+se shm-=S "Show search match numbers (Vim >= 8.1, 2019)
 "highlight LineNr guibg=#181b1e  "highlight line numbers
 "
 " =========================== Airline bar ======================
