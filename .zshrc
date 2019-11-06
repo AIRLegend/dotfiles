@@ -111,6 +111,9 @@ mp3 () {
 # Net speed
 alias speedtest='speedtest-cli'
 
+# Live markdown browser preview
+alias mdrender='smdv'
+
 # added by Miniconda3 4.5.12 installer
 export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"
 # <<< conda init <<<
