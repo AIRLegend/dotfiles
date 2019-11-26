@@ -118,7 +118,7 @@ endif
 let colorgroup['WarningMsg']   = {"GUIFG": _rock_dark, "GUIBG":  _steel, "CTERM":"bold"}
 let colorgroup['TabLine']   = {"GUIFG": _gray,      "GUIBG":  _rock}
 let colorgroup['TabLineFill'] = {"GUIFG": _gray_dark, "GUIBG":  _rock}
-let colorgroup['SpellBad'] = {    "GUIBG":  _pink}
+let colorgroup['SpellBad'] = { "GUIFG": _gray_dark, "GUIBG": _pink, "GUI": "underline"}
 
 " Syntax
 " ----------------------------------------------------------------------
