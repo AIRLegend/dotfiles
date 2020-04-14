@@ -28,6 +28,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plugin 'JamshedVesuna/vim-markdown-preview'  " Also needs Grip installed
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -205,6 +206,11 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 " Better tex support. sometime recognises plaintext
 let g:tex_flavor='latex'
 
+
+" ================  Markdown Preview  config. ======
+let vim_markdown_preview_github=1
+let vim_markdown_preview_temp_file=1  " Remove the tempfile
+
 " ================= Snippets config ================
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -303,6 +309,11 @@ inoremap <c-e> <esc>A
 " Faster moving command mode. (BEGIN/ END)
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
+
+" GoTo definition using YCM
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>vgt :vsplit \|YcmCompleter GoTo<CR>
+nnoremap <leader>sgt :split \|YcmCompleter GoTo<CR>
 
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>

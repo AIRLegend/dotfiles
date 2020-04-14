@@ -96,9 +96,6 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-#Vim
-alias vim='/usr/local/Cellar/vim/8.1.2100/bin/vim'
-
 # Tmux
 alias tmuxa='tmux a -t'
 alias tmuxs='tmux new -s'
@@ -111,8 +108,6 @@ mp3 () {
 # Net speed
 alias speedtest='speedtest-cli'
 
-# Live markdown browser preview
-alias mdrender='smdv'
 
 # added by Miniconda3 4.5.12 installer
 export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"

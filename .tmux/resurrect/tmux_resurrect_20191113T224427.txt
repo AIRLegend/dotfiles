@@ -1,8 +1,0 @@
-pane	chess	1	:git	0	:	0	:/Users/air/Documents/Projects/neuralchess	1	zsh	:
-pane	chess	2	:dev	1	:*	0	:/Users/air/Documents/Projects/neuralchess	0	zsh	:
-pane	chess	2	:dev	1	:*	1	:/Users/air/Documents/Projects/neuralchess	1	zsh	:
-pane	chess	3	:zsh	0	:-	0	:/Users/air/Documents/Projects/neuralchess	1	zsh	:
-window	chess	1	0	:	d5dd,273x69,0,0,0
-window	chess	2	1	:*	a2aa,273x69,0,0{136x69,0,0,1,136x69,137,0,2}
-window	chess	3	0	:-	d5e0,273x69,0,0,3
-state	chess	
