@@ -16,18 +16,19 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 "Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'vim-airline/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-Plugin 'pangloss/vim-javascript' 
+"Plugin 'pangloss/vim-javascript' 
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
-Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+"Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'JamshedVesuna/vim-markdown-preview'  " Also needs Grip installed
 "
 " All of your Plugins must be added before the following line
@@ -220,17 +221,62 @@ let g:UltiSnipsJumpBackwardTrigger="<c-g>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" ================= Coc config ================
+let g:coc_global_extensions = [
+            \'coc-python',
+            \'coc-prettier',
+            \'coc-json',
+            \'coc-tsserver',
+            \'coc-pairs']
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"Control + Space to trigger completion
+inoremap <silent><expr> <C-Space> coc#refresh()
+"Confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " ================= YCM config ================
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+"let g:ycm_key_invoke_completion = '<C-Space>'
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_python_binary_path = '/usr/bin/python3'
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+"let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " ================= Pymode config ================
 " Rope support
-call pymode#default('g:pymode_rope', 1)
-let g:pymode_rope_goto_definition_bind='<leader>g'
+"call pymode#default('g:pymode_rope', 1)
+"let g:pymode_rope_goto_definition_bind='<leader>g'
+"
 " ================ Aux. Functions ================
 function! ToggleSpellCheck()
     set spell!
@@ -276,14 +322,15 @@ imap kk <Esc>
 imap jj <Esc>
 noremap vv <C-v>
 inoremap <C-Space> <C-p>
+
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 "Tab to cycle buffers
-nnoremap <Tab> :bn<cr>
-nnoremap <S-Tab> :bp<cr>
+"nnoremap <Tab> :bn<cr>
+"nnoremap <S-Tab> :bp<cr>
 "leader key twice to cycle between last two open buffers
 nnoremap <leader><leader> <c-^>
 
@@ -322,10 +369,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 " Show syntax highlighting groups for word under cursor
-nmap <C-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+"nmap <C-S-P> :call <SID>SynStack()<CR>
+"function! <SID>SynStack()
+"  if !exists("*synstack")
+"    return
+"  endif
+"  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+"endfunc

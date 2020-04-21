@@ -1,0 +1,7 @@
+{
+    "suggest.timeout": 1000,
+    "diagnostic.checkCurrentLine": true,
+    "suggest.floatEnable": true,
+    "python.condaPath": "~/miniconda3",
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+}
