@@ -300,6 +300,9 @@ function! ToggleSpellCheckEN()
     endif
 endfunction
 
+" Remove trailing whitespaces on save
+autocmd BufWritePre * %s/\s\+$//e
+
 
 "Highlight trailing whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
