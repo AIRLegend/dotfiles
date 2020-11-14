@@ -25,7 +25,8 @@ Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-"Plugin 'pangloss/vim-javascript' 
+Plugin 'tomtom/tcomment_vim'
+"Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
 "Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -53,7 +54,7 @@ filetype plugin indent on    " required
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
-"set vb t_vb=.                 "Eliminar campanita 
+"set vb t_vb=.                 "Eliminar campanita
 set t_Co=256
 syntax enable                      "Plugins propios de VIM (BASICO)
 set background=dark
@@ -72,7 +73,7 @@ set completeopt=menu,preview,noinsert
 " -------------------------------------
 
 set laststatus=2               "Always shows status line
-set statusline=%F\ %m\ %=\ %y\ %l/%L:%c 
+set statusline=%F\ %m\ %=\ %y\ %l/%L:%c
 se shm-=S "Show search match numbers (Vim >= 8.1, 2019)
 "highlight LineNr guibg=#181b1e  "highlight line numbers
 "
@@ -141,8 +142,8 @@ set number                      " always show line numbers
 set relativenumber
 set ignorecase                  " ignore case when searching
 set visualbell
-set smartcase                   
-set autoread  
+set smartcase
+set autoread
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
@@ -254,6 +255,17 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -261,7 +273,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <C-Space> coc#refresh()
 "Confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
-
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -316,6 +327,8 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " ================ TXT ========================
 :autocmd FileType txt  map <S-F6> :call ToggleSpellCheckEN()<CR>
 :autocmd FileType txt map <F6> :call ToggleSpellCheck()<CR>
+:autocmd FileType text map <S-F6> :call ToggleSpellCheckEN()<CR>
+:autocmd FileType text map <F6> :call ToggleSpellCheck()<CR>
 " ================ Markdown ========================
 :autocmd FileType markdown  map <S-F6> :call ToggleSpellCheckEN()<CR>
 :autocmd FileType markdown  map <F6> :call ToggleSpellCheck()<CR>
@@ -352,7 +365,7 @@ nnoremap <c-right> 5<c-w><
 
 "Move to the begin/end faster
 nnoremap H ^
-nnoremap L g_ 
+nnoremap L g_
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
 
@@ -361,9 +374,9 @@ cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
 " GoTo definition using YCM
-nnoremap <leader>gt :YcmCompleter GoTo<CR>
-nnoremap <leader>vgt :vsplit \|YcmCompleter GoTo<CR>
-nnoremap <leader>sgt :split \|YcmCompleter GoTo<CR>
+"nnoremap <leader>gt :YcmCompleter GoTo<CR>
+"nnoremap <leader>vgt :vsplit \|YcmCompleter GoTo<CR>
+"nnoremap <leader>sgt :split \|YcmCompleter GoTo<CR>
 
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>

@@ -3,5 +3,6 @@
     "diagnostic.checkCurrentLine": true,
     "suggest.floatEnable": true,
     "python.condaPath": "~/miniconda3",
-    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "coc.preferences.extensionUpdateCheck": "never"
 }
