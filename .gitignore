@@ -1,3 +1,5 @@
 .DS_Store
 .vim/bundle/*
 .tmux/resurrect/*
+.tmux/plugins/*
+.tmux/.tmux/*
