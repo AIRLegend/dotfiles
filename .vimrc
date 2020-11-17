@@ -206,6 +206,17 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -213,7 +224,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <C-Space> coc#refresh()
 "Confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
-
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -256,6 +266,8 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " ================ TXT ========================
 :autocmd FileType txt  map <S-F6> :call ToggleSpellCheckEN()<CR>
 :autocmd FileType txt map <F6> :call ToggleSpellCheck()<CR>
+:autocmd FileType text map <S-F6> :call ToggleSpellCheckEN()<CR>
+:autocmd FileType text map <F6> :call ToggleSpellCheck()<CR>
 " ================ Markdown ========================
 :autocmd FileType markdown  map <S-F6> :call ToggleSpellCheckEN()<CR>
 :autocmd FileType markdown  map <F6> :call ToggleSpellCheck()<CR>
@@ -301,9 +313,9 @@ cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
 " GoTo definition using YCM
-nnoremap <leader>gt :YcmCompleter GoTo<CR>
-nnoremap <leader>vgt :vsplit \|YcmCompleter GoTo<CR>
-nnoremap <leader>sgt :split \|YcmCompleter GoTo<CR>
+"nnoremap <leader>gt :YcmCompleter GoTo<CR>
+"nnoremap <leader>vgt :vsplit \|YcmCompleter GoTo<CR>
+"nnoremap <leader>sgt :split \|YcmCompleter GoTo<CR>
 
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>

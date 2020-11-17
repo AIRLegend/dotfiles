@@ -1,3 +1,4 @@
+ZSH_DISABLE_COMPFIX=true
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -110,22 +111,25 @@ alias speedtest='speedtest-cli'
 
 
 # added by Miniconda3 4.5.12 installer
-export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"
 # <<< conda init <<<
 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/Users/air/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/Users/air/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/Users/air/miniconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/Users/air/miniconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
+# __conda_setup="$('/Users/air/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/air/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/air/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/air/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
+
+export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
