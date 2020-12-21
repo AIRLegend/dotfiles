@@ -2,3 +2,5 @@
 .vim/bundle/*
 .tmux/plugins/*
 .tmux/resurrect/*
+.tmux/plugins/*
+.tmux/.tmux/*

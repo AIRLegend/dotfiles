@@ -14,25 +14,17 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 
+Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
-"Plugin 'vim-syntastic/syntastic'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'lervag/vimtex'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-Plugin 'tomtom/tcomment_vim'
-"Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
-"Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plugin 'JamshedVesuna/vim-markdown-preview'  " Also needs Grip installed
+Plugin 'TaDaa/vimade'  "Fade inactive buffer
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,47 +69,8 @@ set completeopt=menu,preview,noinsert
 set laststatus=2               "Always shows status line
 set statusline=%F\ %m\ %=\ %y\ %l/%L:%c
 se shm-=S "Show search match numbers (Vim >= 8.1, 2019)
-"highlight LineNr guibg=#181b1e  "highlight line numbers
-"
-" =========================== Airline bar ======================
-"let g:airline_theme='molokai'
-"let g:airline_theme='lucius'
+highlight LineNr guibg=#181b1e  "highlight line numbers
 
- "set noshowmode "Remove status mode text
-"let g:airline_powerline_fonts = 1   "Activate the triangles as separators
-"if !exists('g:airline_symbols')
-"    let g:airline_symbols = {}
-"endif
-"
-""" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-""
-""" airline symbols
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
-"
-"let g:Powerline_symbols='unicode'
-
-
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline#extensions#whitespace#enabled = 0 "Do not show `trailing space` warning
 
 set encoding=utf-8
 
@@ -130,6 +83,7 @@ set path+=**                    "Autocompletado para ficheros en el dir
 
 set showmode                    " always show what mode we're currently editing in
 set wrap                        " don't wrap lines
+set tw=0                        " Don't auto linebreak
 set linebreak                   " Word wrap level (not character)
 set tabstop=4                   " a tab is four spaces
 set smarttab
@@ -178,7 +132,6 @@ let mapleader = "-"
 let maplocalleader="\<space>"
 
 " ================ Turn Off Swap Files ==============
-
 set noswapfile
 set nobackup
 set nowb
@@ -210,27 +163,27 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 " Better tex support. sometime recognises plaintext
 let g:tex_flavor='latex'
 
-
 " ================  Markdown Preview  config. ======
 let vim_markdown_preview_github=1
 let vim_markdown_preview_temp_file=1  " Remove the tempfile
 
-" ================= Snippets config ================
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-g>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 " ================= Coc config ================
 let g:coc_global_extensions = [
             \'coc-python',
+            \'coc-snippets',
             \'coc-prettier',
             \'coc-json',
             \'coc-tsserver',
             \'coc-pairs']
+
+" ========== Detect active python env =========
+if $CONDA_PREFIX == ""
+  let s:current_python_path=$CONDA_PYTHON_EXE
+else
+  let s:current_python_path=$CONDA_PREFIX.'/bin/python'
+endif
+call coc#config('python', {'pythonPath': s:current_python_path})
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -278,18 +231,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-
-" ================= YCM config ================
-"let g:ycm_key_invoke_completion = '<C-Space>'
-"let g:ycm_autoclose_preview_window_after_insertion = 1
-"let g:ycm_python_binary_path = '/usr/bin/python3'
-"let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-"let g:ycm_server_python_interpreter = '/usr/bin/python3'
-" ================= Pymode config ================
-" Rope support
-"call pymode#default('g:pymode_rope', 1)
-"let g:pymode_rope_goto_definition_bind='<leader>g'
-"
 " ================ Aux. Functions ================
 function! ToggleSpellCheck()
     set spell!
