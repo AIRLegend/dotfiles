@@ -20,6 +20,8 @@ Plugin 'joshdick/onedark.vim'
 "Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'Valloric/YouCompleteMe'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
@@ -60,8 +62,8 @@ syntax enable                      "Plugins propios de VIM (BASICO)
 set background=dark
 set termguicolors
 "Color scheme
-":colorscheme moody
-colorscheme lucid
+colorscheme moody
+" colorscheme lucid
 
 set completeopt=menu,preview,noinsert
 " COLORSCHEME onedark -----------------
@@ -120,7 +122,7 @@ se shm-=S "Show search match numbers (Vim >= 8.1, 2019)
 set encoding=utf-8
 
 set nocompatible
-
+set hidden                      "Let me open new buffers without saving
 set incsearch                   "Incremental search. Add highlight on the fly
 
 set wildmenu                    "All matching files when tab complete (:find file)
@@ -187,7 +189,7 @@ set textwidth=85
 set wrapmargin=0
 set formatoptions+=t
 set colorcolumn=+1
-set columns=90
+" set columns=90
 
 " Enable folding
 set foldmethod=indent
@@ -381,7 +383,6 @@ cnoremap <c-e> <end>
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 
 
 " Show syntax highlighting groups for word under cursor
