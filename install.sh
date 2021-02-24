@@ -14,3 +14,14 @@ vim +PluginInstall +qall
 
 #Install tmux Plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Install fzf
+if [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
+        brew install fzf
+        # To install useful key bindings and fuzzy completion:
+        $(brew --prefix)/opt/fzf/install
+else
+        # Linux
+        echo "You'll have to manually install fzf here..."
+

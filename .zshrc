@@ -109,7 +109,8 @@ mp3 () {
 # Net speed
 alias speedtest='speedtest-cli'
 
-
+# Fzf
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # added by Miniconda3 4.5.12 installer
 # <<< conda init <<<
 
@@ -133,3 +134,5 @@ export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
