@@ -17,8 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'junegunn/fzf.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-surround'
@@ -56,8 +54,8 @@ syntax enable                      "Plugins propios de VIM (BASICO)
 set background=dark
 set termguicolors
 "Color scheme
-colorscheme moody
-" colorscheme lucid
+"colorscheme moody
+colorscheme lucid
 
 set completeopt=menu,preview,noinsert
 " COLORSCHEME onedark -----------------
