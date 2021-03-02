@@ -22,6 +22,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
 Plugin 'tmhedberg/SimpylFold' "Fold functions
 Plugin 'TaDaa/vimade'  "Fade inactive buffer
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -228,7 +230,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " ================ Aux. Functions ================
-function! ToggleSpellCheck()
+function! SpellCheck()
     set spell!
     syntax spell toplevel
     if &spell
@@ -239,7 +241,7 @@ function! ToggleSpellCheck()
     endif
 endfunction
 
-function! ToggleSpellCheckEN()
+function! SpellCheckEN()
     set spell!
     syntax spell toplevel
     if &spell
@@ -260,17 +262,18 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " ================ Latex ========================
 :autocmd FileType tex  map <F2> :w<CR>:!pdflatex %<CR><CR>
-:autocmd FileType tex  map <S-F6> :call ToggleSpellCheckEN()<CR>
-:autocmd FileType tex map <F6> :call ToggleSpellCheck()<CR>
+:autocmd FileType tex  map <S-F6> :call SpellCheckEN()<CR>
+:autocmd FileType tex map <F6> :call SpellCheck()<CR>
 
 " ================ TXT ========================
-:autocmd FileType txt  map <S-F6> :call ToggleSpellCheckEN()<CR>
-:autocmd FileType txt map <F6> :call ToggleSpellCheck()<CR>
-:autocmd FileType text map <S-F6> :call ToggleSpellCheckEN()<CR>
-:autocmd FileType text map <F6> :call ToggleSpellCheck()<CR>
+:autocmd FileType text map <S-F6> :call SpellCheckEN()<CR>
+:autocmd FileType text map <F6> :call SpellCheck()<CR>
 " ================ Markdown ========================
-:autocmd FileType markdown  map <S-F6> :call ToggleSpellCheckEN()<CR>
-:autocmd FileType markdown  map <F6> :call ToggleSpellCheck()<CR>
+:autocmd FileType markdown  map <S-F6> :call SpellCheckEN()<CR>
+:autocmd FileType markdown  map <F6> :call SpellCheck()<CR>
+
+:command SpellCheck call SpellCheckEN()
+:command SpellCheckES call SpellCheck()
 
 " =============== Some other remaps ===================
 imap kk <Esc>
