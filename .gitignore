@@ -4,3 +4,6 @@
 .tmux/resurrect/*
 .tmux/plugins/*
 .tmux/.tmux/*
+
+.tmux/plugins/tmux-resurrect
+.tmux/plugins/tpm
