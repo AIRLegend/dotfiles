@@ -7,3 +7,5 @@
 
 .tmux/plugins/tmux-resurrect
 .tmux/plugins/tpm
+.tmux/.tmux/
+.tmux/
