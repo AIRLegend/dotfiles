@@ -15,7 +15,7 @@ vim +PluginInstall +qall
 #Install tmux Plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Install fzf
+# Install fzf and other binaries
 if [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
         brew install fzf
@@ -24,4 +24,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
         # Linux
         echo "You'll have to manually install fzf here..."
+        echo "You'll have to manually install the_silver_searcher here..."
 
