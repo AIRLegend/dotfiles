@@ -201,12 +201,13 @@ function! s:check_back_space() abort
 endfunction
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -219,7 +220,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr <Plug>(noc-references)
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -230,6 +231,17 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
 
 " ================ Aux. Functions ================
 function! SpellCheck()
@@ -270,12 +282,16 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " ================ TXT ========================
 :autocmd FileType text map <S-F6> :call SpellCheckEN()<CR>
 :autocmd FileType text map <F6> :call SpellCheck()<CR>
+
 " ================ Markdown ========================
 :autocmd FileType markdown  map <S-F6> :call SpellCheckEN()<CR>
 :autocmd FileType markdown  map <F6> :call SpellCheck()<CR>
 
 :command SpellCheck call SpellCheckEN()
 :command SpellCheckES call SpellCheck()
+
+" ================ Python ========================
+:autocmd FileType python set formatoptions-=t
 
 " =============== Some other remaps ===================
 imap kk <Esc>
@@ -288,9 +304,6 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-"Tab to cycle buffers
-"nnoremap <Tab> :bn<cr>
-"nnoremap <S-Tab> :bp<cr>
 "leader key twice to cycle between last two open buffers
 nnoremap <leader><leader> <c-^>
 
@@ -316,11 +329,6 @@ inoremap <c-e> <esc>A
 " Faster moving command mode. (BEGIN/ END)
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
-
-" GoTo definition using YCM
-"nnoremap <leader>gt :YcmCompleter GoTo<CR>
-"nnoremap <leader>vgt :vsplit \|YcmCompleter GoTo<CR>
-"nnoremap <leader>sgt :split \|YcmCompleter GoTo<CR>
 
 "Nerdtree
 map <C-n> :NERDTreeToggle<CR>
