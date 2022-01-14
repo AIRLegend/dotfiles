@@ -235,7 +235,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph

@@ -4,5 +4,8 @@
     "suggest.floatEnable": true,
     "python.condaPath": "~/opt/miniconda3",
     "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-    "coc.preferences.extensionUpdateCheck": "never"
+    "coc.preferences.extensionUpdateCheck": "never",
+    "suggest.enablePreview": true,
+    "python.jediEnabled": true,
+    "python.formatting.provider": "black"
 }
