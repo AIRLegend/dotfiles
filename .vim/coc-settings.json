@@ -3,6 +3,9 @@
     "diagnostic.checkCurrentLine": true,
     "suggest.floatEnable": true,
     "python.condaPath": "~/miniconda3",
+    "python.jediEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
     "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "coc.preferences.extensionUpdateCheck": "never"
 }
