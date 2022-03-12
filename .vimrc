@@ -182,6 +182,7 @@ if $CONDA_PREFIX == ""
 else
   let s:current_python_path=$CONDA_PREFIX.'/bin/python'
 endif
+let s:current_python_path=$CONDA_PYTHON_EXE
 call coc#config('python', {'pythonPath': s:current_python_path})
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

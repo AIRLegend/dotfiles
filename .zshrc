@@ -109,6 +109,9 @@ mp3 () {
 # Net speed
 alias speedtest='speedtest-cli'
 
+# Peerflix
+alias peerflix="peerflix --port 8000 -h 0.0.0.0 --path ."
+
 # Fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # added by Miniconda3 4.5.12 installer
@@ -117,17 +120,17 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/air/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/air/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/air/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/air/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/Users/air/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/air/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/air/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/air/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"
