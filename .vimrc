@@ -48,29 +48,25 @@ filetype plugin indent on    " required
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
-"set vb t_vb=.                 "Eliminar campanita
+set vb t_vb=.                      "Eliminar campanita
 set t_Co=256
 syntax enable                      "Plugins propios de VIM (BASICO)
+
+"Color scheme
 set background=dark
 set termguicolors
-"Color scheme
-"colorscheme moody
 colorscheme lucid
+" Override with Custom colorscheme config
+if !empty(glob("./color_config.vimrc"))
+   source color_config.vimrc
+endif
 
 set completeopt=menu,preview,noinsert
-" COLORSCHEME onedark -----------------
-"let g:onedark_termcolors=256
-"let g:onedark_terminal_italics=1
-"colorscheme onedark
-"Override onedark settings
-"hi Folded guifg=#87afaf guibg=#4b5263 guisp=#080808 gui=NONE ctermfg=109 ctermbg=232 cterm=NONE
-" -------------------------------------
 
 set laststatus=2               "Always shows status line
 set statusline=%F\ %m\ %=\ %y\ %l/%L:%c
 se shm-=S "Show search match numbers (Vim >= 8.1, 2019)
 highlight LineNr guibg=#181b1e  "highlight line numbers
-
 
 set encoding=utf-8
 
@@ -121,7 +117,6 @@ set fillchars=diff:⣿,vert:\|
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
 
-
 " Use system clipboard
 if has('clipboard')
     set clipboard=unnamedplus    "LINUX
@@ -137,7 +132,7 @@ set nobackup
 set nowb
 
 set wrap                        "wrapping
-set textwidth=85
+set textwidth=90
 "set linebreak
 set wrapmargin=0
 set formatoptions+=t
@@ -154,8 +149,8 @@ set sidescrolloff=15
 set sidescroll=1
 
 " =================  Syntastic config. ================
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=W605,E501,E231' "Ignore Invalid end sequence warning
+" let g:syntastic_python_checkers=['flake8']
+" let g:syntastic_python_flake8_args='--ignore=W605,E501,E231' "Ignore Invalid end sequence warning
 
 " =================  Vimtex config. ================
 let g:vimtex_disable_version_warning = 0
@@ -169,12 +164,13 @@ let vim_markdown_preview_temp_file=1  " Remove the tempfile
 
 " ================= Coc config ================
 let g:coc_global_extensions = [
-            \'coc-python',
+            \'coc-pyright',
             \'coc-snippets',
             \'coc-prettier',
             \'coc-json',
             \'coc-tsserver',
             \'coc-pairs']
+        " \'coc-python',   " Too old.
 
 " ========== Detect active python env =========
 if $CONDA_PREFIX == ""
@@ -182,6 +178,7 @@ if $CONDA_PREFIX == ""
 else
   let s:current_python_path=$CONDA_PREFIX.'/bin/python'
 endif
+let s:current_python_path=$CONDA_PYTHON_EXE
 call coc#config('python', {'pythonPath': s:current_python_path})
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -269,7 +266,6 @@ endfunction
 " Remove trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
 
-
 "Highlight trailing whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -317,8 +313,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <Space> za
 
 nnoremap <esc><esc> :silent! nohls<cr>
-nnoremap <c-left> 5<c-w>>
-nnoremap <c-right> 5<c-w><
+nnoremap <C-S-Right> 5<c-w>>
+nnoremap <C-S-Left> 5<c-w><
 
 "Move to the begin/end faster
 nnoremap H ^
