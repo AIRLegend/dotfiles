@@ -48,7 +48,7 @@ filetype plugin indent on    " required
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
-set vb t_vb=.                      "Eliminar campanita
+"set vb t_vb=.                      "Eliminar campanita
 set t_Co=256
 syntax enable                      "Plugins propios de VIM (BASICO)
 

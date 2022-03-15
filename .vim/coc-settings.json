@@ -2,11 +2,16 @@
     "suggest.timeout": 1000,
     "diagnostic.checkCurrentLine": true,
     "suggest.floatEnable": true,
-    "python.pythonPath": "../current_python.sh",
-    "python.linting.flake8Enabled": true,
     "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "coc.preferences.extensionUpdateCheck": "never",
     "suggest.enablePreview": true,
-    "python.jediEnabled": true,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "../current_python.sh",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    //"pyright.disableDiagnostics": true,
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUndefinedVariable": "none"
+    }
 }
