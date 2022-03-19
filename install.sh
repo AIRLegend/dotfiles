@@ -12,7 +12,7 @@ mkdir -p .tmux/plugins/tpm
 # Install fzf and other binaries
 if [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
-        brew install tmux fzf vim
+        brew install tmux fzf vim the_silver_searcher
         # To install useful key bindings and fuzzy completion:
         $(brew --prefix)/opt/fzf/install
 else
