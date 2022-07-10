@@ -63,7 +63,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
+plugins=(git z fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,11 +109,12 @@ mp3 () {
 # Net speed
 alias speedtest='speedtest-cli'
 
-# Peerflix
-alias peerflix="peerflix --port 8000 -h 0.0.0.0 --path ."
+# Add GNU calendar with monday first (brew install gcal)
+alias cal='gcal -s 1'
 
 # Fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
 # added by Miniconda3 4.5.12 installer
 # <<< conda init <<<
 
@@ -137,5 +138,8 @@ export PATH="/Users/air/miniconda3/bin:/usr/local/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Ruby stuff
+# export PATH="/Users/air/.local/share/gem/ruby/3.1.0/bin/:/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
