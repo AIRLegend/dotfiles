@@ -164,13 +164,13 @@ let vim_markdown_preview_temp_file=1  " Remove the tempfile
 
 " ================= Coc config ================
 let g:coc_global_extensions = [
-            \'coc-pyright',
+            \'coc-jedi@0.30.1',
+            \'coc-diagnostic',
             \'coc-snippets',
             \'coc-prettier',
             \'coc-json',
             \'coc-tsserver',
             \'coc-pairs']
-        " \'coc-python',   " Too old.
 
 " ========== Detect active python env =========
 if $CONDA_PREFIX == ""
