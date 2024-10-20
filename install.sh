@@ -1,13 +1,15 @@
 #!/bin/bash
 DIRECTORY=$(cd `dirname $0` && pwd)
 
+mkdir -p ~/.config
+mkdir -p .tmux/plugins/tpm
+
 ln -s ${DIRECTORY}/.vim ~/.vim
+ln -s ${DIRECTORY}/nvim ~/.config/nvim
 ln -s ${DIRECTORY}/.vimrc ~/.vimrc
 ln -s ${DIRECTORY}/.zshrc ~/.zshrc
 ln -s ${DIRECTORY}/.tmux.conf ~/.tmux.conf
 ln -s ${DIRECTORY}/es.utf-8.spl ~/.vim/spell/es.utf-8.spl
-
-mkdir -p .tmux/plugins/tpm
 
 # Install fzf and other binaries
 if [[ "$OSTYPE" == "darwin"* ]]; then
