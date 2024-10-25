@@ -4,7 +4,7 @@ vim.g.encoding = "utf-8"
 vim.g.ruler = true
 vim.go.clipboard = "unnamedplus"
 vim.g.number = true
--- vim.o.mouse=""
+vim.o.mouse=""
 
 vim.g.noswapfile = true
 vim.g.nobackup = true

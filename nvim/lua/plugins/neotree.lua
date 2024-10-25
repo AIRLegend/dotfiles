@@ -1,8 +1,8 @@
-return 
+return
 {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    dependencies = { 
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
@@ -38,13 +38,13 @@ return
         {text = "󰌵", texthl = "DiagnosticSignHint"})
 
       require("neo-tree").setup({
-        close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
-        sort_function = nil , -- use a custom function for sorting files and directories in the tree 
+        sort_function = nil , -- use a custom function for sorting files and directories in the tree
         -- sort_function = function (a,b)
         --       if a.type == b.type then
         --           return a.path > b.path
@@ -147,9 +147,9 @@ return
             nowait = true,
           },
           mappings = {
-            ["<space>"] = { 
-                "toggle_node", 
-                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+            ["<space>"] = {
+                "toggle_node",
+                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
             },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
@@ -170,7 +170,7 @@ return
             -- ['C'] = 'close_all_subnodes',
             ["z"] = "close_all_nodes",
             --["Z"] = "expand_all_nodes",
-            ["a"] = { 
+            ["a"] = {
               "add",
               -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
               -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -203,9 +203,9 @@ return
         nesting_rules = {},
         filesystem = {
           filtered_items = {
-            visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
-            hide_gitignored = true,
+            visible = true, -- when true, they will just be displayed differently than normal items
+            hide_dotfiles = false,
+            hide_gitignored = false,
             hide_hidden = true, -- only works on Windows for hidden files/directories
             hide_by_name = {
               --"node_modules"

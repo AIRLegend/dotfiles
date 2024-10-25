@@ -3,7 +3,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    { 'williamboman/mason.nvim', config = false }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -163,24 +163,33 @@ return {
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       --tsserver = {},
-      ruff = {},
-      jedi_language_server = {},
---      pylsp = {
---        settings = {
---          pylsp = {
---            plugins = {
---              --pyflakes = { enabled = false },
---              --pycodestyle = { enabled = false },
---              --autopep8 = { enabled = false },
---              --yapf = { enabled = false },
---              --mccabe = { enabled = false },
---              --pylsp_mypy = { enabled = false },
---              --pylsp_black = { enabled = false },
---              --jpylsp_isort = { enabled = false },
---            },
---          },
---        },
---      },
+      --      jedi_language_server = {},
+			--   ruff = {
+			--    settings = {lineLength=50 ,
+			--    		configurationPreference = "filesystemFirst",
+			-- showSyntaxErrors = true,
+			-- logLevel = "debug",
+			-- lint = {enable = true,select = {"E", "F"}}
+			--    }
+			--   },
+     pylsp = {
+       settings = {
+         pylsp = {
+           plugins = {
+             -- pyflakes = { enabled = true},
+             -- pycodestyle = { enabled = true },
+	     flake8 = {enabled = true}
+	     -- ruff = { enabled = true, formatEnabled = true, extendSelect = { "ALL" }, format = { "ALL" },}
+             --autopep8 = { enabled = false },
+             --yapf = { enabled = false },
+             --mccabe = { enabled = false },
+             --pylsp_mypy = { enabled = false },
+             --pylsp_black = { enabled = false },
+             --jpylsp_isort = { enabled = false },
+           },
+         },
+       },
+     },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       cssls = {},
       --tailwindcss = {},
@@ -222,7 +231,9 @@ return {
     --    :Mason
     --
     --  You can press `g?` for help in this menu.
-    require('mason').setup()
+    require('mason').setup({
+	    PATH="append"
+    })
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
