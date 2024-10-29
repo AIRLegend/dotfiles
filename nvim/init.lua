@@ -37,6 +37,7 @@ vim.o.undofile = true -- Save undo history (default: false)
 
 
 -- Clear highlights on search when pressing <Esc> in normal mode
+vim.keymap.set('t', '<Esc>', "<C-\\><C-n>")
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'kk', '<Esc>')

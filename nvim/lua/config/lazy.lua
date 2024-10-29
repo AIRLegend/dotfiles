@@ -28,7 +28,8 @@ require("lazy").setup({
     require('plugins.lsp'),
     require('plugins.autocompletion'),
     require('plugins.comment'),
-    require('plugins.colorscheme')
+    require('plugins.colorscheme'),
+    require('plugins.surround')
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
