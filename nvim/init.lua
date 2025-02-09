@@ -50,6 +50,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', ' ', 'za', { desc = 'Unfold / fold' })
 vim.keymap.set('n', '<C-S-Right>', '5<c-w>>', { desc = 'Resize panel right' })
 vim.keymap.set('n', '<C-S-Left>', '5<c-w><', { desc = 'Resize panel left' })
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {buffer = 0})  -- exit terminal with escape
 
 -- Remove trailing whitespaces
 vim.api.nvim_create_autocmd('FileType', {

@@ -1,6 +1,7 @@
 " ------------------------------------------------------------------
 "                     VUNDLE PLUGIN MANAGER
 
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -17,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'neoclide/coc.nvim', {'tag': 'v0.0.80'}
 Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-surround'
 Plugin 'mxw/vim-jsx' "JS ES6 syntax (node)
@@ -169,7 +170,7 @@ let g:coc_global_extensions = [
             \'coc-snippets',
             \'coc-prettier',
             \'coc-json',
-            \'coc-tsserver',
+            \'coc-tsserver@1.10.5',
             \'coc-pairs']
 
 " ========== Detect active python env =========
@@ -185,17 +186,17 @@ call coc#config('python', {'pythonPath': s:current_python_path})
 " delays and poor user experience.
 set updatetime=300
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
